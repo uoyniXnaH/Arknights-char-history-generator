@@ -1,4 +1,10 @@
 {
     "title_sc": "明日方舟聊天记录生成器",
-    "title_en": "Arknights Chat History Generator"
+    "title_en": "Arknights Chat History Generator",
+    "sample_group_sc": "罗德岛1群(100)",
+    "sample_group_en": "Rhodes I(100)",
+    "confirm_sc": "完成",
+    "confirm_en": "Confirm",
+    "change_group_sc": "修改群名称",
+    "change_group_en": "Change group name"
 }

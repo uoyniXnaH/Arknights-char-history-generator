@@ -65,4 +65,12 @@ export const ShareStyles = StyleSheet.create({
   fw_700: {
     fontWeight: '700'
   },
+  modalOverlay: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)'
+  }
 });
