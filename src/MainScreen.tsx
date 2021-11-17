@@ -11,6 +11,11 @@ function MainScreen() {
   const [message, setMessage] = useState<string>("");
   const [inputHeight, setInputHeight] = useState<number>(0);
   const [isSelfSpk, setIsSelfSpk] = useState<boolean>(true);
+
+  const MessageObj = (props: {isSelf: boolean, chara: string}) => {
+    
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
