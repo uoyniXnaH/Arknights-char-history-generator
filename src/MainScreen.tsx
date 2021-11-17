@@ -9,7 +9,8 @@ function MainScreen() {
   const [showEditGroupName, setShowEditGroupName] = useState<boolean>(false);
   const [groupName, setGroupName] = useState<string>(Texts.sample_group_sc);
   const [message, setMessage] = useState<string>("");
-  const [inputHeight, setInputHeight] = useState<string | number | undefined>(0);
+  const [inputHeight, setInputHeight] = useState<number>(0);
+  const [isSelfSpk, setIsSelfSpk] = useState<boolean>(true);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -50,6 +51,30 @@ function MainScreen() {
         <TouchableOpacity style={styles.footerIconContainer}>
           <Image style={styles.footerBtn} source={Images.send} />
         </TouchableOpacity>
+      </View>
+      <View style={styles.status}>
+        <View style={styles.subjectContainer}>
+          <TouchableOpacity style={styles.footerIconContainer}>
+            <Image style={styles.portrait} source={Images.account_circle} />
+          </TouchableOpacity>
+            <TouchableOpacity style={styles.footerIconContainer} onPress={() => setIsSelfSpk(false)}>
+            <Image
+              style={[styles.footerBtn, {tintColor: isSelfSpk ? '#555' : '#81b214'}]}
+              source={Images.comment_dots}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.subjectContainer}>
+          <TouchableOpacity style={styles.footerIconContainer} onPress={() => setIsSelfSpk(true)}>
+            <Image
+              style={[styles.footerBtn, ShareStyles.flipX, {tintColor: isSelfSpk ? '#81b214' : '#555'}]}
+              source={Images.comment_dots}
+            />
+          </TouchableOpacity>
+            <TouchableOpacity style={styles.footerIconContainer}>
+            <Image style={styles.portrait} source={Images.account_circle} />
+          </TouchableOpacity>
+        </View>
       </View>
       <Modal
         transparent={true}
@@ -101,12 +126,11 @@ const styles = StyleSheet.create({
   },
   msgContainer: {
     flexDirection: 'column',
-    justifyContent: 'flex-start',
-    marginBottom: 48
+    justifyContent: 'flex-start'
   },
   footer: {
     position: 'absolute',
-    bottom: 0,
+    bottom: 48,
     paddingHorizontal: 8,
     paddingVertical: 5,
     width: '100%',
@@ -138,6 +162,29 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     color: 'white',
     backgroundColor: '#3c373e'
+  },
+  status: {
+    position: 'absolute',
+    bottom: 0,
+    paddingHorizontal: 8,
+    width: '100%',
+    height: 48,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#142f43',
+    borderTopWidth: 1,
+    borderColor: 'rgba(255,255,255,0.05)'
+  },
+  subjectContainer: {
+    width: '22%',
+    height: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  portrait: {
+    width: 45,
+    height: 45,
+    tintColor: 'white'
   },
   editContainer: {
     width: '15%',

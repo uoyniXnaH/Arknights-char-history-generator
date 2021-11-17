@@ -72,5 +72,11 @@ export const ShareStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(0,0,0,0.5)'
+  },
+  flipX: {
+    transform: [{scaleX: -1}]
+  },
+  flipY: {
+    transform: [{scaleY: -1}]
   }
 });

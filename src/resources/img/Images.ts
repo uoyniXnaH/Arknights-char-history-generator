@@ -7,5 +7,8 @@ export const Images = {
     image: require('./image_black_24dp.svg'),
     send: require('./send_black_24dp.svg'),
     emoji_emotions: require('./emoji_emotions_black_24dp.svg'),
-    mic: require('./mic_black_24dp.svg')
+    mic: require('./mic_black_24dp.svg'),
+    chat: require('./chat_black_24dp.svg'),
+    comment_dots: require('./comment-dots-regular.svg'),
+    account_circle: require('./account_circle_black_24dp.svg')
 };
