@@ -10,5 +10,8 @@ export const Images = {
     mic: require('./mic_black_24dp.svg'),
     chat: require('./chat_black_24dp.svg'),
     comment_dots: require('./comment-dots-regular.svg'),
-    account_circle: require('./account_circle_black_24dp.svg')
+    account_circle: require('./account_circle_black_24dp.svg'),
+    settings: require('./settings_black_24dp.svg'),
+    file_download: require('./file_download_black_24dp.svg'),
+    arrow_left: require('./arrow_left_black_24dp.svg')
 };

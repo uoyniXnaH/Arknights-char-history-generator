@@ -3,7 +3,9 @@ import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, TouchableWi
 
 import { ShareStyles } from './resources/ShareStyles';
 import Texts from './resources/Texts.json';
+import Names from './resources/Names.json';
 import { Images } from './resources/img/Images';
+import { Characters } from './resources/characters/Characters'
 
 function MainScreen() {
   const [showEditGroupName, setShowEditGroupName] = useState<boolean>(false);
@@ -11,6 +13,8 @@ function MainScreen() {
   const [message, setMessage] = useState<string>("");
   const [inputHeight, setInputHeight] = useState<number>(0);
   const [isSelfSpk, setIsSelfSpk] = useState<boolean>(true);
+  const [hero, setHero] = useState<any>(Characters.npc_doctor);
+  const [heroine, setHeroine] = useState<any>(Characters.char_002_amiya);
 
   const MessageObj = (props: {isSelf: boolean, chara: string}) => {
     
@@ -60,11 +64,11 @@ function MainScreen() {
       <View style={styles.status}>
         <View style={styles.subjectContainer}>
           <TouchableOpacity style={styles.footerIconContainer}>
-            <Image style={styles.portrait} source={Images.account_circle} />
+            <Image style={styles.portrait} source={heroine} />
           </TouchableOpacity>
             <TouchableOpacity style={styles.footerIconContainer} onPress={() => setIsSelfSpk(false)}>
             <Image
-              style={[styles.footerBtn, {tintColor: isSelfSpk ? '#555' : '#81b214'}]}
+              style={[styles.statusBtn, {tintColor: isSelfSpk ? '#555' : '#81b214'}]}
               source={Images.comment_dots}
             />
           </TouchableOpacity>
@@ -72,12 +76,12 @@ function MainScreen() {
         <View style={styles.subjectContainer}>
           <TouchableOpacity style={styles.footerIconContainer} onPress={() => setIsSelfSpk(true)}>
             <Image
-              style={[styles.footerBtn, ShareStyles.flipX, {tintColor: isSelfSpk ? '#81b214' : '#555'}]}
+              style={[styles.statusBtn, ShareStyles.flipX, {tintColor: isSelfSpk ? '#81b214' : '#555'}]}
               source={Images.comment_dots}
             />
           </TouchableOpacity>
             <TouchableOpacity style={styles.footerIconContainer}>
-            <Image style={styles.portrait} source={Images.account_circle} />
+            <Image style={styles.portrait} source={hero} />
           </TouchableOpacity>
         </View>
       </View>
@@ -135,7 +139,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     position: 'absolute',
-    bottom: 48,
+    bottom: 80,
     paddingHorizontal: 8,
     paddingVertical: 5,
     width: '100%',
@@ -173,7 +177,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     paddingHorizontal: 8,
     width: '100%',
-    height: 48,
+    height: 80,
     flexDirection: 'row',
     justifyContent: 'space-between',
     backgroundColor: '#142f43',
@@ -181,15 +185,20 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255,255,255,0.05)'
   },
   subjectContainer: {
-    width: '22%',
+    width: '28%',
     height: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
   portrait: {
-    width: 45,
-    height: 45,
-    tintColor: 'white'
+    width: 60,
+    height: 60,
+    borderRadius: 10,
+    backgroundColor: '#b4c6a6'
+  },
+  statusBtn: {
+    width: 36,
+    height: 36
   },
   editContainer: {
     width: '15%',
