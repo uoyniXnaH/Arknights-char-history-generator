@@ -5,10 +5,10 @@ import { ShareStyles } from './resources/ShareStyles';
 import Texts from './resources/Texts.json';
 import Names from './resources/Names.json';
 import { Images } from './resources/img/Images';
-import { Characters } from './resources/characters/Characters'
+import { Characters } from './resources/characters/Characters';
+import ChatBubble from './ChatBubble';
 
 function MainScreen() {
-  const [showEditGroupName, setShowEditGroupName] = useState<boolean>(false);
   const [groupName, setGroupName] = useState<string>(Texts.sample_group_sc);
   const [message, setMessage] = useState<string>("");
   const [inputHeight, setInputHeight] = useState<number>(0);
@@ -16,26 +16,28 @@ function MainScreen() {
   const [hero, setHero] = useState<any>(Characters.npc_doctor);
   const [heroine, setHeroine] = useState<any>(Characters.char_002_amiya);
 
-  const MessageObj = (props: {isSelf: boolean, chara: string}) => {
-    
-  }
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerContents}>
           <Image style={styles.headerBtn} source={Images.chevron_left} />
         </View>
-        <TouchableOpacity style={styles.headerContents} onPress={() => setShowEditGroupName(true)}>
-          <Text style={[ShareStyles.font_16, {color: 'white'}]}>{groupName}</Text>
-        </TouchableOpacity>
+        <TextInput
+          style={[ShareStyles.font_16, styles.groupEdit]}
+          placeholder={Texts.change_group_sc}
+          onChangeText={text => setGroupName(text)}
+          value={groupName}
+          maxLength={20}
+        />
         <View style={styles.headerContents}>
           <Image style={styles.headerBtn} source={Images.more_horiz} />
         </View>
       </View>
-      <View style={styles.msgContainer}>
 
+      <View style={styles.msgContainer}>
+      
       </View>
+
       <View style={styles.footer}>
         <TouchableOpacity style={styles.footerIconContainer}>
           <Image style={styles.footerBtn} source={Images.mic} />
@@ -61,6 +63,7 @@ function MainScreen() {
           <Image style={styles.footerBtn} source={Images.send} />
         </TouchableOpacity>
       </View>
+
       <View style={styles.status}>
         <View style={styles.subjectContainer}>
           <TouchableOpacity style={styles.footerIconContainer}>
@@ -85,29 +88,25 @@ function MainScreen() {
           </TouchableOpacity>
         </View>
       </View>
-      <Modal
-        transparent={true}
-        animationType={'fade'}
-        visible={showEditGroupName}
-      >
-        <TouchableWithoutFeedback onPressIn={() => setShowEditGroupName(false)}>
-          <View style={ShareStyles.modalOverlay}>
-            <TouchableWithoutFeedback>
-              <View style={styles.editContainer}>
-                <TextInput
-                  style={[ShareStyles.font_16, styles.groupNameInput]}
-                  placeholder={Texts.change_group_sc}
-                  onChangeText={text => setGroupName(text)}
-                  value={groupName}
-                />
-              </View>
-            </TouchableWithoutFeedback>
-          </View>
-        </TouchableWithoutFeedback>
-      </Modal>
     </View>
   );
 }
+
+
+
+const msgStyles = StyleSheet.create({
+  heroContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'flex-end'
+  },
+  msgBox: {
+    maxWidth: '80%',
+    paddingHorizontal: 8,
+    backgroundColor: '#81b214',
+    borderRadius: 8
+  },
+})
 
 const styles = StyleSheet.create({
   container: {
@@ -132,6 +131,11 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     tintColor: 'white'
+  },
+  groupEdit: {
+    width: '70%',
+    color: 'white',
+    textAlign: 'center'
   },
   msgContainer: {
     flexDirection: 'column',
@@ -201,8 +205,8 @@ const styles = StyleSheet.create({
     height: 36
   },
   editContainer: {
-    width: '15%',
-    minWidth: 200,
+    width: '80%',
+    maxWidth: 300,
     // height: 140,
     paddingVertical: 20,
     borderRadius: 18,
