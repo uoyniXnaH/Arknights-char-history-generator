@@ -13,5 +13,7 @@ export const Images = {
     account_circle: require('./account_circle_black_24dp.svg'),
     settings: require('./settings_black_24dp.svg'),
     file_download: require('./file_download_black_24dp.svg'),
-    arrow_left: require('./arrow_left_black_24dp.svg')
+    bubble_arrow: require('./bubble_arrow.svg'),
+    message_bubble_left: require('./message_bubble_left.png'),
+    message_bubble_right: require('./message_bubble_right.png')
 };

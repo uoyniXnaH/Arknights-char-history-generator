@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, TouchableWithoutFeedback, Modal } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import { ShareStyles } from './resources/ShareStyles';
 import Texts from './resources/Texts.json';
@@ -35,7 +36,18 @@ function MainScreen() {
       </View>
 
       <View style={styles.msgContainer}>
-      
+        <ChatBubble
+          portrait={Characters.npc_doctor}
+          name={Names.npc_doctor_sc}
+          text={"@铃兰"}
+          isHero={true}
+        />
+        <ChatBubble
+          portrait={Characters.char_358_lisa}
+          name={Names.char_358_lisa_sc}
+          text={"@Ash"}
+          isHero={false}
+        />
       </View>
 
       <View style={styles.footer}>
@@ -106,7 +118,7 @@ const msgStyles = StyleSheet.create({
     backgroundColor: '#81b214',
     borderRadius: 8
   },
-})
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -139,7 +151,9 @@ const styles = StyleSheet.create({
   },
   msgContainer: {
     flexDirection: 'column',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    height: hp('100%') - 241,
+    overflow: 'visible',
   },
   footer: {
     position: 'absolute',
