@@ -55,15 +55,19 @@ function MainScreen() {
           <Image style={styles.footerBtn} source={Images.mic} />
         </TouchableOpacity>
         <View style={styles.footerMsgBox}>
-          <TextInput
-            style={[ShareStyles.font_16, styles.txtInput, {height:inputHeight}]}
-            placeholder={''}
-            onChangeText={text => setMessage(text)}
-            value={message}
-            multiline={true}
-            numberOfLines={1}
-            onContentSizeChange={(event) => setInputHeight(event.nativeEvent.contentSize.height)}
-          />
+          <View>
+            <Text style={[ShareStyles.font_18, {padding: 4}]}>
+              {message}&#8203;
+            </Text>
+            <TextInput
+                style={[ShareStyles.font_18, styles.txtInput]}
+                placeholder={''}
+                onChangeText={text => setMessage(text)}
+                value={message}
+                multiline={true}
+                numberOfLines={1}
+              />
+            </View>
         </View>
         <TouchableOpacity style={styles.footerIconContainer}>
           <Image style={styles.footerBtn} source={Images.emoji_emotions} />
@@ -185,10 +189,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   txtInput: {
-    padding: 6,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    padding: 4,
+    width: '100%',
+    height: '100%',
     borderRadius: 5,
     color: 'white',
-    backgroundColor: '#3c373e'
+    backgroundColor: '#3c373e',
+    overflow: 'hidden'
   },
   status: {
     position: 'absolute',
